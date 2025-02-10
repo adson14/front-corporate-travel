@@ -1,13 +1,24 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "../components/Dashboard/index.vue";
+import Login from "../components/Auth/Login.vue";
+
+function isAuthenticated() {
+  return !!localStorage.getItem("token");
+}
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: "/",
-      name: "dashboard",
+      name: "Dashboard",
       component: Dashboard,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/login",
+      name: "Login",
+      component: Login,
     },
     // {
     //   path: "/about",
@@ -15,6 +26,16 @@ const router = createRouter({
     //   component: () => import("../views/AboutView.vue"),
     // },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  console.log(!isAuthenticated());
+
+  if (to.meta.requiresAuth && !isAuthenticated()) {
+    next({ name: "Login" });
+  } else {
+    next();
+  }
 });
 
 export default router;

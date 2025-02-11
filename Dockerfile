@@ -12,4 +12,4 @@ RUN [ -f .env ] || cp .env.example .env
 
 EXPOSE 5173
 
-CMD ["npm", "run", "serve"]
+CMD ["npm", "run", "dev", "--","--host"]

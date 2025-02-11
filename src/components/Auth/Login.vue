@@ -21,7 +21,6 @@
 
 <script>
 import api from '../../services/api'
-
 export default {
   name: 'Login',
   data() {
@@ -42,7 +41,9 @@ export default {
           password: this.password,
         })
         const token = response.data.access_token
+        const decodedToken = this.decodeJWT(token);
         localStorage.setItem('token', token)
+        localStorage.setItem('user_type', decodedToken.user_type)
         this.$router.push({ name: 'Dashboard' })
       } catch (err) {
         console.log(err)
@@ -51,6 +52,18 @@ export default {
         this.loading = false
       }
     },
+    decodeJWT(token) {
+      try {
+        const [header, payload, signature] = token.split('.');
+
+        const decodedPayload = atob(payload);
+
+        return JSON.parse(decodedPayload);
+      } catch (error) {
+        console.error('Erro ao decodificar o JWT:', error);
+        return null;
+      }
+    }
   },
 }
 </script>

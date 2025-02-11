@@ -1,14 +1,21 @@
-import './assets/main.css'
+import "./assets/main.css";
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
 
-import App from './App.vue'
-import router from './router'
+import App from "./App.vue";
+import router from "./router";
 
-const app = createApp(App)
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-app.use(createPinia())
-app.use(router)
+library.add(faCheck, faTimes);
 
-app.mount('#app')
+const app = createApp(App);
+
+app.use(createPinia());
+app.use(router);
+
+app.component("font-awesome-icon", FontAwesomeIcon);
+app.mount("#app");

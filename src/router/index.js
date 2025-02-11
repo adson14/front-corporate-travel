@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "../components/Dashboard/index.vue";
 import Login from "../components/Auth/Login.vue";
+import DefaultLayout from "@/layouts/DefaultLayout.vue";
 
 function isAuthenticated() {
   return !!localStorage.getItem("token");
@@ -11,20 +12,21 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "Dashboard",
-      component: Dashboard,
-      meta: { requiresAuth: true },
+      component: DefaultLayout,
+      children: [
+        {
+          path: "/",
+          name: "Dashboard",
+          component: Dashboard,
+          meta: { requiresAuth: true },
+        },
+      ],
     },
     {
       path: "/login",
       name: "Login",
       component: Login,
     },
-    // {
-    //   path: "/about",
-    //   name: "about",
-    //   component: () => import("../views/AboutView.vue"),
-    // },
   ],
 });
 

@@ -11,14 +11,23 @@
     </aside>
 
     <main class="content">
+      <div class="header">
+        <NotificationIcon />
+      </div>
       <router-view />
     </main>
   </div>
 </template>
 
 <script>
+
+import NotificationIcon from '../components/Shared/Notification.vue';
+
 export default {
   name: "DefaultLayout",
+  components: {
+    NotificationIcon,
+  },
 };
 </script>
 
@@ -66,6 +75,13 @@ export default {
   background-color: #ecf0f1;
 }
 
+.header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+
 /* Responsividade: para telas menores (por exemplo, até 768px) */
 @media (max-width: 768px) {
   .layout {
@@ -85,5 +101,6 @@ export default {
     order: 1;
     padding: 1rem;
   }
+  
 }
 </style>

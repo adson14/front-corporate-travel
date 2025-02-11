@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <h1>Pedidos de Viagem</h1>
+    <app-header title="Pedidos de Viagem" />
     <div class="new-request" v-if="user_type !== 'admin'">
       <button @click="goToNewRequest" class="btn btn-primary">Novo Pedido</button>
     </div>
@@ -109,12 +109,15 @@ import api from '../../services/api'
 import LoadingSpinner from '../Shared/LoadingSpinner.vue'
 import Notification from '../Shared/Notification.vue'
 import { formatarDataParaBrasileiro } from '../../utils/dateFormatter';
+import AppHeader from '../Shared/AppHeader.vue';
+
 
 export default {
   name: 'Dashboard',
   components: {
     LoadingSpinner,
     Notification,
+    AppHeader
   },
   data() {
     return {
@@ -380,6 +383,23 @@ export default {
 
 h1 {
   margin-bottom: 1.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header-title {
+  margin: 0;
+}
+
+.header-link a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
 }
 
 </style>

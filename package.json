@@ -1,7 +1,8 @@
 {
-  "name": "teste",
+  "name": "travel-app",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "type": "module",
   "scripts": {
     "dev": "vite",

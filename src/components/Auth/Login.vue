@@ -44,6 +44,8 @@ export default {
         const decodedToken = this.decodeJWT(token);
         localStorage.setItem('token', token)
         localStorage.setItem('user_type', decodedToken.user_type)
+        localStorage.setItem('user_id', decodedToken.sub)
+
         this.$router.push({ name: 'Dashboard' })
       } catch (err) {
         console.log(err)

@@ -12,7 +12,7 @@
 
     <main class="content">
       <div class="header">
-        <NotificationIcon />
+        <Notification />
       </div>
       <router-view />
     </main>
@@ -21,12 +21,12 @@
 
 <script>
 
-import NotificationIcon from '../components/Shared/Notification.vue';
+import Notification from '../components/Shared/Notification.vue';
 
 export default {
   name: "DefaultLayout",
   components: {
-    NotificationIcon,
+    Notification,
   },
 };
 </script>

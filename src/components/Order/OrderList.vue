@@ -79,7 +79,7 @@
 
     </div>
 
-    <notification
+    <alert-notification
       v-if="notification.message"
       :type="notification.type"
       :message="notification.message"
@@ -91,7 +91,7 @@
 <script>
 import api from '../../services/api'
 import LoadingSpinner from '../Shared/LoadingSpinner.vue'
-import Notification from '../Shared/Notification.vue'
+import AlertNotification from '../Shared/AlertNotification.vue';
 import { formatarDataParaBrasileiro } from '../../utils/dateFormatter';
 import AppHeader from '../Shared/AppHeader.vue';
 import RequestActionButtons from './Actions.vue';
@@ -101,7 +101,7 @@ export default {
   name: 'OrderList',
   components: {
     LoadingSpinner,
-    Notification,
+    AlertNotification,
     AppHeader,
     RequestActionButtons
   },

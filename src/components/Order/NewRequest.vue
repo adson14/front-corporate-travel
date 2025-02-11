@@ -47,7 +47,7 @@
 
     </form>
 
-    <notification
+    <alert-notification
       v-if="notification.message"
       :type="notification.type"
       :message="notification.message"
@@ -58,13 +58,13 @@
 
 <script>
 import api from '../../services/api';
-import Notification from '../Shared/Notification.vue';
+import AlertNotification from '../Shared/AlertNotification.vue';
 import AppHeader from '../Shared/AppHeader.vue';
 
 export default {
   name: 'NewRequest',
   components: {
-    Notification,
+    AlertNotification,
     AppHeader,
   },
   data() {
